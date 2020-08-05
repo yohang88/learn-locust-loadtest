@@ -31,11 +31,11 @@ class PublicBeneficiariesSection(TaskSet):
     # def public_list_beneficiaries(self):
     #     self.client.get("v1/pub/beneficiaries", headers={"accept": "application/json"})
     #     pass
-    #
-    # @task
-    # def public_list_beneficiaries_bnba(self):
-    #     self.client.get("v1/pub/beneficiaries-bnba", headers={"accept": "application/json"})
-    #     pass
+
+    @task
+    def public_list_beneficiaries_bnba(self):
+        self.client.get("v1/pub/beneficiaries-bnba", headers={"accept": "application/json"})
+        pass
 
     @task
     def public_list_beneficiaries_bnba_statistic_area(self):
