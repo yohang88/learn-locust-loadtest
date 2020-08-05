@@ -7,7 +7,7 @@ class AuthenticateAdminSection(TaskSet):
 
     def login(self):
         data = {"LoginForm": {"username": "staffkotabandung", "password": "123456"}}
-        response = self.client.post("v1/staff/login", data=json.dumps(data), headers={"accept": "application/json","content-type": "application/json"})
+        response = self.client.post("v1/staff/login", data=json.dumps(data), headers={"accept": "application/json", "content-type": "application/json"})
         if response:
             response_json = response.json()
             self.auth_token = response_json['data']['access_token']
@@ -27,10 +27,10 @@ class AuthenticateAdminSection(TaskSet):
         self.interrupt()
 
 class PublicBeneficiariesSection(TaskSet):
-    # @task
-    # def public_list_beneficiaries(self):
-    #     self.client.get("v1/pub/beneficiaries", headers={"accept": "application/json"})
-    #     pass
+    @task
+    def public_list_beneficiaries(self):
+        self.client.get("v1/pub/beneficiaries", headers={"accept": "application/json"})
+        pass
 
     @task
     def public_list_beneficiaries_bnba(self):
