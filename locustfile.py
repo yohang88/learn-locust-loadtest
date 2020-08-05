@@ -27,14 +27,19 @@ class AuthenticateAdminSection(TaskSet):
         self.interrupt()
 
 class PublicBeneficiariesSection(TaskSet):
-    @task
-    def public_list_beneficiaries(self):
-        self.client.get("v1/pub/beneficiaries", headers={"accept": "application/json"})
-        pass
+    # @task
+    # def public_list_beneficiaries(self):
+    #     self.client.get("v1/pub/beneficiaries", headers={"accept": "application/json"})
+    #     pass
+    #
+    # @task
+    # def public_list_beneficiaries_bnba(self):
+    #     self.client.get("v1/pub/beneficiaries-bnba", headers={"accept": "application/json"})
+    #     pass
 
     @task
-    def public_list_beneficiaries_bnba(self):
-        self.client.get("v1/pub/beneficiaries-bnba", headers={"accept": "application/json"})
+    def public_list_beneficiaries_bnba_statistic_area(self):
+        self.client.get("v1/pub/beneficiaries-bnba/statistics-by-area", headers={"accept": "application/json"})
         pass
 
     @task
@@ -44,7 +49,7 @@ class PublicBeneficiariesSection(TaskSet):
 
 class ApiUser(FastHttpUser):
     wait_time = between(5, 15)
-    tasks = {AuthenticateAdminSection: 10, PublicBeneficiariesSection: 2}
+    tasks = {PublicBeneficiariesSection: 10}
 
     # @task
     # def ping(self):
